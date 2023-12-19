@@ -1,0 +1,65 @@
+rock = '''
+    _______
+---'   ____)
+      (_____)
+      (_____)
+      (____)
+---.__(___)
+'''
+
+paper = '''
+    _______
+---'   ____)____
+          ______)
+          _______)
+         _______)
+---.__________)
+'''
+
+scissors = '''
+    _______
+---'   ____)____
+          ______)
+       __________)
+      (____)
+---.__(___)
+'''
+
+#Write your code below this line 👇
+import random
+
+print("Welcome to Rock, Paper, Scissors")
+player_play = int(input("What do you choose? Press '0' for Rock, '1' for Paper, or '2' for Scissors\n"))
+ai_play = random.randint(0, 2)
+
+player_drawing = ""
+ai_drawing = ""
+
+if player_play == 0:
+  player_drawing = rock
+elif player_play == 1:
+  player_drawing = paper
+else:
+  player_drawing = scissors
+
+if ai_play == 0:
+  ai_drawing = rock
+elif player_play == 1:
+  ai_drawing = paper
+else:
+  ai_drawing = scissors
+
+print("You played:")
+print(player_drawing)
+print()
+print("AI played:")
+print(ai_drawing)
+print()
+
+if player_play == ai_play:
+  print("It's a draw.")
+elif (player_play == ai_play) or (player_play == 0 and ai_play == 2):
+  print("You Won!")
+else:
+  print("You lost")
+
