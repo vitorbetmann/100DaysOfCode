@@ -1,0 +1,16 @@
+def turn_right():
+    for i in range(3):
+        turn_left()
+
+while not at_goal():
+    if is_facing_north() and not front_is_clear() and not wall_on_right():
+        turn_right()
+    elif not front_is_clear() and wall_on_right():
+        turn_left()
+    elif not front_is_clear() and not wall_on_right():
+        turn_right()
+    else:
+        move()
+        if not wall_on_right():
+            turn_right()
+        
