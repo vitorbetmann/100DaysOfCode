@@ -7,36 +7,34 @@
 # Track the number of turns remaining.
 # If they run out of turns, provide feedback to the player. 
 # Include two different difficulty levels (e.g., 10 guesses in easy mode, only 5 guesses in hard mode).
-import random
+from random import randint
 from art import logo
+
+def game_mode():
+  game_mode = input("Choose a difficulty. Type 'easy' or 'hard': ").lower()
+  if game_mode == 'easy':
+    return 10
+  else:
+    return 5
+
+def gameover(total_lives, has_guessed):
+  if total_lives == 0 or has_guessed:
+    return True
+  return False
 
 def guess_game():
   
   start = 1
   end = 100
-  target = random.randint(start, end)
-  print(target)
+  target = randint(start, end)
+  #print(target)
   
   print(f"I'm thinking of a number between {start} and {end}")
-  
-  game_mode = input("Choose a difficulty. Type 'easy' or 'hard': ").lower()
-
   
   #variables and functions
   has_guessed = False
   
-  total_lives = 0
-  if game_mode == 'easy':
-    total_lives = 10
-  else:
-    total_lives = 5
-  
-  def gameover(total_lives, has_guessed):
-    if total_lives == 0:
-      return True
-    if has_guessed:
-      return True
-    return False
+  total_lives = game_mode()
   
   while not gameover(total_lives, has_guessed):
       
@@ -53,7 +51,7 @@ def guess_game():
       if guess == target:
         print(f"You got it! The answer was {target}")
       elif(total_lives == 0):
-        print("You've run out of guesses. You Died.")
+        print(f"You've run out of guesses. The answer was {target}.")
       play_again = input("Would you like to play again? (type 'y' or 'n') ")
       if play_again == "y":
         guess_game()
