@@ -15,7 +15,7 @@ def caesar(direction, text, shift):
     else:
       letter_position = alphabet.index(text[i])
       if direction == "encode":
-        new_letter = letter_position + shift - 26
+        new_letter = letter_position + shift
       elif direction == "decode":
         new_letter = letter_position - shift
       result += alphabet[new_letter]
